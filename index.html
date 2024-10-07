@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Damage Per Second (DPS) Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        label {
+            display: inline-block;
+            width: 150px;
+            text-align: right;
+            margin-bottom: 10px;
+        }
+        input {
+            margin-bottom: 10px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        p {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .container {
+            display: inline-block;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+    </style>
+    <script>
+        function calculateDPS() {
+            var damage = parseFloat(document.getElementById("damage").value);
+            var duration = parseFloat(document.getElementById("duration").value);
+
+            if (!isNaN(damage) && !isNaN(duration) && duration > 0) {
+                var dps = damage / duration;
+                document.getElementById("result").innerText = "DPS: " + dps.toFixed(2);
+            } else {
+                document.getElementById("result").innerText = "Please enter valid numbers.";
+            }
+        }
+
+        function resetFields() {
+            document.getElementById("damage").value = "";
+            document.getElementById("duration").value = "";
+            document.getElementById("result").innerText = "";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Damage Per Second (DPS) Calculator</h1>
+
+        <label for="damage">Total Damage:</label>
+        <input type="number" id="damage" step="any" placeholder="Enter total damage"><br>
+
+        <label for="duration">Duration (seconds):</label>
+        <input type="number" id="duration" step="any" placeholder="Enter duration in seconds"><br>
+
+        <button onclick="calculateDPS()">Calculate DPS</button>
+        <button onclick="resetFields()">Reset</button>
+
+        <p id="result"></p>
+    </div>
+</body>
+</html>
